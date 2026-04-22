@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/portfoliolordneco/$1" }
+  ],
+  "buildCommand": "cd portfoliolordneco && npm install && npm run build",
+  "outputDirectory": "portfoliolordneco/dist",
+  "installCommand": "cd portfoliolordneco && npm install"
+}
