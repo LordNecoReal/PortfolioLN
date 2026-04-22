@@ -38,6 +38,29 @@ function App() {
 function Header({ darkMode, toggleDarkMode }) {
   const [activeSection, setActiveSection] = useState('inicio');
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['inicio', 'sobre', 'projetos'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Chama uma vez para definir o estado inicial
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
     const section = document.getElementById(sectionId);
@@ -115,10 +138,10 @@ function About() {
             acaba e todo dia é um novo aprendizado.
           </p>
           <div className="contact-links">
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="contact-link github">
+            <a href="https://github.com/LordNecoReal" target="_blank" rel="noopener noreferrer" className="contact-link github">
               GitHub
             </a>
-            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="contact-link linkedin">
+            <a href="https://linkedin.com/in/oswaldo-lord-neco" target="_blank" rel="noopener noreferrer" className="contact-link linkedin">
               LinkedIn
             </a>
             <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="contact-link whatsapp">
@@ -176,31 +199,19 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      name: 'TaskFlow',
-      description: 'Aplicativo de gerenciamento de tarefas com drag-and-drop e notificações em tempo real.',
-      image: '📋',
-      link: 'https://github.com/'
+      name: 'Desafio Final Connect',
+      description: 'Projeto final do curso Connect, um site completo com funcionalidades modernas e design responsivo.',
+      image: '🚀',
+      githubLink: 'https://github.com/LordNecoReal/DesafioFinalConnectOswaldo',
+      liveLink: 'https://desafiofinalconnectoswaldo.vercel.app/'
     },
     {
       id: 2,
-      name: 'WeatherApp',
-      description: 'Aplicação de previsão do tempo com integração de API e design responsivo.',
-      image: '🌤️',
-      link: 'https://github.com/'
-    },
-    {
-      id: 3,
-      name: 'Ecoleta',
-      description: 'Plataforma para conectar pessoas a pontos de coleta de resíduos recicláveis.',
-      image: '♻️',
-      link: 'https://github.com/'
-    },
-    {
-      id: 4,
-      name: 'FinControl',
-      description: 'Sistema de controle financeiro pessoal com gráficos e relatórios detalhados.',
-      image: '💰',
-      link: 'https://github.com/'
+      name: 'Calculadora Rock',
+      description: 'Uma calculadora temática de rock com design estilizado e funcionalidades completas de cálculos matemáticos.',
+      image: '🎸',
+      githubLink: 'https://github.com/LordNecoReal/calculadoraRock',
+      liveLink: 'https://calculadorarock.vercel.app/'
     }
   ];
 
@@ -217,14 +228,24 @@ function Projects() {
               <div className="project-info">
                 <h3 className="project-name">{project.name}</h3>
                 <p className="project-description">{project.description}</p>
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="project-button"
-                >
-                  Ver Projeto →
-                </a>
+                <div className="project-buttons">
+                  <a 
+                    href={project.githubLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="project-button github-btn"
+                  >
+                    📦 GitHub
+                  </a>
+                  <a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="project-button live-btn"
+                  >
+                    🌐 Ver Site
+                  </a>
+                </div>
               </div>
             </div>
           ))}
