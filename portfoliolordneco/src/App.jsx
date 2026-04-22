@@ -2,11 +2,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
+// Componente de Splash Screen
+function SplashScreen({ onComplete }) {
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true);
+      setTimeout(onComplete, 1000);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  return (
+    <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
+      <div className="splash-content">
+        <div className="splash-logo">
+          <span className="splash-icon">🎧</span>
+          <span className="splash-icon">💻</span>
+          <span className="splash-icon">🚀</span>
+        </div>
+        <h1 className="splash-title">Lord Neco</h1>
+        <div className="splash-subtitle">Eterno Estudante</div>
+        <div className="splash-loader">
+          <div className="loader-bar"></div>
+        </div>
+        <p className="splash-text">Carregando experiência...</p>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode !== null ? JSON.parse(savedMode) : true;
   });
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
@@ -20,6 +53,14 @@ function App() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
 
   return (
     <div className={`app ${darkMode ? 'dark' : 'light'}`}>
