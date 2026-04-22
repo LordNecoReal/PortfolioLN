@@ -1,5 +1,5 @@
 // App.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
@@ -37,6 +37,35 @@ function App() {
 
 function Header({ darkMode, toggleDarkMode }) {
   const [activeSection, setActiveSection] = useState('inicio');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Inicializa o áudio
+    audioRef.current = new Audio('/musicas/Breath of Fire IV - A Warring God.mp3');
+    audioRef.current.loop = true; // Faz a música repetir
+    
+    // Cleanup ao desmontar
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.log('Erro ao reproduzir música:', error);
+        });
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +85,7 @@ function Header({ darkMode, toggleDarkMode }) {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Chama uma vez para definir o estado inicial
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -95,9 +124,15 @@ function Header({ darkMode, toggleDarkMode }) {
             Projetos
           </button>
         </nav>
-        <button className="theme-toggle" onClick={toggleDarkMode}>
-          {darkMode ? '☀️' : '🌙'}
-        </button>
+        <div className="header-controls">
+          <button className="music-player" onClick={toggleMusic} title={isPlaying ? 'Pausar música' : 'Tocar música'}>
+            {isPlaying ? '🎵' : '🎧'}
+            <span className="music-text">{isPlaying ? 'Tocando' : 'Tocar Música'}</span>
+          </button>
+          <button className="theme-toggle" onClick={toggleDarkMode}>
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+        </div>
       </div>
     </header>
   );

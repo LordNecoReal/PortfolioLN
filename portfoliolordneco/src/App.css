@@ -1,4 +1,4 @@
-/* App.css - Versão atualizada com foto maior e novos estilos */
+/* App.css - Adicionando estilos do player de música */
 * {
   margin: 0;
   padding: 0;
@@ -119,6 +119,37 @@ body.light {
     width: 80%;
     opacity: 1;
   }
+}
+
+/* Header Controls - Player de Música e Theme Toggle */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.music-player {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.music-player:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.music-text {
+  font-size: 0.85rem;
 }
 
 .theme-toggle {
@@ -512,8 +543,12 @@ body.light {
     gap: 1rem;
   }
   
+  .header-controls {
+    justify-content: center;
+  }
+  
   .hero {
-    padding-top: 120px;
+    padding-top: 160px;
   }
   
   .hero-name {
@@ -569,6 +604,10 @@ body.light {
   .project-buttons {
     flex-direction: column;
   }
+  
+  .music-text {
+    display: inline;
+  }
 }
 
 /* Celulares (até 600px) */
@@ -594,12 +633,24 @@ body.light {
     padding: 0.4rem;
   }
   
+  .header-controls {
+    gap: 0.5rem;
+  }
+  
+  .music-player {
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .music-text {
+    font-size: 0.75rem;
+  }
+  
   .theme-toggle {
     font-size: 1.2rem;
   }
   
   .hero {
-    padding-top: 140px;
+    padding-top: 180px;
     min-height: auto;
     padding-bottom: 60px;
   }
@@ -718,12 +769,20 @@ body.light {
     width: 80%;
     text-align: center;
   }
+  
+  .music-text {
+    display: none;
+  }
+  
+  .music-player {
+    padding: 0.4rem;
+  }
 }
 
 /* Landscape para celulares */
 @media (max-height: 600px) and (orientation: landscape) {
   .hero {
-    padding-top: 100px;
+    padding-top: 130px;
     min-height: auto;
     padding-bottom: 40px;
   }
