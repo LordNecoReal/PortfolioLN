@@ -1,0 +1,15 @@
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  background: rgba(15, 25, 35, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
+}

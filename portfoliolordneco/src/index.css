@@ -1,20 +1,7 @@
-/* index.css - Atualizado */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
-  overflow-x: hidden;
-}
-
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -32,7 +19,6 @@ body {
   background: #764ba2;
 }
 
-/* Previne problemas de layout em dispositivos móveis */
 img {
   max-width: 100%;
   height: auto;
@@ -44,7 +30,6 @@ button {
   border: none;
 }
 
-/* Melhora a experiência de toque em dispositivos móveis */
 @media (max-width: 768px) {
   button, a {
     min-height: 44px;

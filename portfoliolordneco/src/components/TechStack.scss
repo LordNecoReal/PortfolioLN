@@ -1,0 +1,190 @@
+.tech-stack {
+  padding: 80px 0;
+
+  @media (max-width: 600px) {
+    padding: 50px 0;
+  }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.tech-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    gap: 1rem;
+  }
+}
+
+.tech-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(102, 126, 234, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  body.dark & {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  body.light & {
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    
+    body.light & {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 85px;
+    height: 85px;
+  }
+
+  @media (max-width: 600px) {
+    width: 75px;
+    height: 75px;
+  }
+
+  @media (max-width: 480px) {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.tech-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.tech-icon-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+
+  .tech-card:hover & {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 600px) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// Correção para o ícone do GitHub - SEMPRE VISÍVEL
+.github-icon {
+  // Dark mode - normal (ícone branco)
+  body.dark & {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  // Dark mode - hover (mantém branco com leve brilho)
+  body.dark .tech-card:hover & {
+    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  // Light mode - normal (preto com grayscale)
+  body.light & {
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
+
+  // Light mode - hover (cor original do GitHub)
+  body.light .tech-card:hover & {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+}
+
+.tech-name {
+  position: absolute;
+  bottom: -30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: fadeInUp 0.3s ease;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.75rem;
+    bottom: -25px;
+  }
+}

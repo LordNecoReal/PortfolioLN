@@ -1,0 +1,21 @@
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid;
+}
+body.dark .footer {
+  border-top-color: #2a2a2a;
+}
+body.light .footer {
+  border-top-color: #e0e0e0;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+@media (max-width: 600px) {
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}/*# sourceMappingURL=Footer.css.map */

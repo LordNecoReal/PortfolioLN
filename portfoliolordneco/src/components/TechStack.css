@@ -1,0 +1,118 @@
+.tech-stack {
+  padding: 80px 0;
+}
+@media (max-width: 600px) {
+  .tech-stack {
+    padding: 50px 0;
+  }
+}
+
+.tech-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .tech-grid {
+    gap: 1rem;
+  }
+}
+
+.tech-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+body.dark .tech-card {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+  .tech-card {
+    width: 85px;
+    height: 85px;
+  }
+}
+@media (max-width: 600px) {
+  .tech-card {
+    width: 75px;
+    height: 75px;
+  }
+}
+@media (max-width: 480px) {
+  .tech-card {
+    width: 65px;
+    height: 65px;
+  }
+}
+@media (max-width: 360px) {
+  .tech-card {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.tech-icon {
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+}
+.tech-card:hover .tech-icon {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .tech-icon {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .tech-icon {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .tech-icon {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 360px) {
+  .tech-icon {
+    font-size: 1.4rem;
+  }
+}
+
+.tech-name {
+  position: absolute;
+  bottom: -30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 600px) {
+  .tech-name {
+    font-size: 0.75rem;
+    bottom: -25px;
+  }
+}/*# sourceMappingURL=TechStack.css.map */
